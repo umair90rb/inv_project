@@ -54,7 +54,7 @@ if (!isset($_SESSION["userid"])) {
 	<?php
 		include_once("./templates/update_products.php");
 	?>
-	
-	
+
+
 </body>
 </html>
