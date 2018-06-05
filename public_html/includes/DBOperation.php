@@ -1,11 +1,11 @@
 <?php
 
 /**
-* 
+*
 */
 class DBOperation
 {
-	
+
 	private $con;
 
 	function __construct()

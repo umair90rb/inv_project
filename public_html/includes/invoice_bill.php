@@ -24,7 +24,7 @@ if ($_GET["order_date"] && $_GET["invoice_no"]) {
 	$pdf->Cell(40,10,"Price",1,0,"C");
 	$pdf->Cell(40,10,"Total (Rs)",1,1,"C");
 
-	for ($i=0; $i < count($_GET["pid"]) ; $i++) { 
+	for ($i=0; $i < count($_GET["pid"]) ; $i++) {
 		$pdf->Cell(10,10, ($i+1) ,1,0,"C");
 		$pdf->Cell(70,10, $_GET["pro_name"][$i],1,0,"C");
 		$pdf->Cell(30,10, $_GET["qty"][$i],1,0,"C");
@@ -54,7 +54,7 @@ if ($_GET["order_date"] && $_GET["invoice_no"]) {
 
 	$pdf->Output("../PDF_INVOICE/PDF_INVOICE_".$_GET["invoice_no"].".pdf","F");
 
-	$pdf->Output();	
+	$pdf->Output();
 
 }
 
