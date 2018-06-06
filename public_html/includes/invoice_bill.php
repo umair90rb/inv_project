@@ -52,9 +52,9 @@ if ($_GET["order_date"] && $_GET["invoice_no"]) {
 
 	$pdf->Cell(180,10,"Signature",0,0,"R");
 
-	$pdf->Output("../PDF_INVOICE/PDF_INVOICE_".$_GET["invoice_no"].".pdf","F");
+	$pdf->Output('I',"../PDF_INVOICE/PDF_INVOICE_".$_GET["invoice_no"].".pdf");
 
-	$pdf->Output();
+	//$pdf->Output();
 
 }
 

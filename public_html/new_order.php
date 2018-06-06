@@ -134,7 +134,7 @@ if (!isset($_SESSION["userid"])) {
 
                     <center>
                       <input type="submit" id="order_form" style="width:150px;" class="btn btn-info" value="Order">
-                      <input type="submit" id="print_invoice" style="width:150px;" class="btn btn-success d-none" value="Print Invoice">
+                      <input type="submit" id="print_invoice" style="width:150px;" class="btn btn-success" value="Print Invoice">
                     </center>
 
 
