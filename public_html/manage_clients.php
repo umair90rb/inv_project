@@ -2,7 +2,7 @@
 include_once("./database/constants.php");
 include_once("./database/db.php");
  if (!isset($_SESSION["userid"])) {
-	 	header("location:"."./public_html/index.php");
+	 	header("location:"."./index.php");
  	}
 	  $db = new Database();
 	  $con = $db->connect();

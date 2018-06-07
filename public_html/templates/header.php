@@ -19,9 +19,10 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="register.php">Add User</a>
                 <a class="dropdown-item" href="manage_user.php">Manage User</a>
-                <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="user_role.php">User Roles</a>
+                <a class="dropdown-item" href="add_user_role.php">Add User Roles</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,8 +48,13 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="manage_categories.php">Manage Categories</a>
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#form_category" >Add New Categories</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="manage_brand.php">Manage Brands</a>
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#form_brand">Add New Brands</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="manage_product.php">Manage Products</a>
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#form_products" >Add New Products</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="stock_summary.php">Stock Summary</a>
 
