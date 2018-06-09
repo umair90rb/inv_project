@@ -1,8 +1,14 @@
 <?php
 include_once("./database/constants.php");
+include_once("./database/db.php");
 if (!isset($_SESSION["userid"])) {
 	header("location:".DOMAIN."/");
 }
+$db = new Database();
+$con = $db->connect();
+$query = "SELECT id, title FROM user_permissions";
+$result = $con->query($query);
+$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,8 +59,9 @@ if (!isset($_SESSION["userid"])) {
 		            <label for="usertype">User Type</label>
 		            <select name="usertype" class="form-control" id="usertype">
 		              <option value="">Choose User Type</option>
-		              <option value="Admin">Admin</option>
-		              <option value="Other">Other</option>
+		              <?php foreach ($rows as $row) { ?>
+										<option value="<?php echo $row['id']; ?>"><?php echo $row['title']; ?></option>
+		              <?php } ?>
 		            </select>
 		            <small id="t_error" class="form-text text-muted"></small>
 		          </div>

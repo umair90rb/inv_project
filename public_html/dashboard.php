@@ -23,19 +23,31 @@ if (!isset($_SESSION["userid"])) {
 	<?php include_once("./templates/header.php"); ?>
 	<br/><br/>
 	<div class="container">
+		<?php
+			if (isset($_GET["msg"]) AND !empty($_GET["msg"])) {
+				?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					  <?php echo $_GET["msg"]; ?>
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+				<?php
+			}
+		?>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card mx-auto">
 				  <img class="card-img-top mx-auto" style="width:60%;" src="./images/user.png" alt="Card image cap">
 				  <div class="card-body">
 				    <h4 class="card-title">Profile Info</h4>
-				    <p class="card-text">Registration Info : <?php echo $_SESSION['last_login']; ?></p>
+				    <p class="card-text">Welcome <?php echo $_SESSION['username']; ?></p>
 				  </div>
 				</div>
 			</div>
 			<div class="col-md-8">
 				<!-- <div class="jumbotron" style="width:100%;height:100%;"> -->
-					<h1>Welcome <?php echo $_SESSION['username']; ?>,</h1>
+					
 					<div class="row">
 						<div class="col-sm-6">
 							<!-- <iframe src="http://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe> -->

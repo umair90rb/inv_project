@@ -7,7 +7,7 @@ include_once("./database/db.php");
 	  $db = new Database();
 	  $con = $db->connect();
     if (isset($_GET["search"])) {
-      $query = "SELECT * FROM user_permissions Where ". $_GET['search_by'] ." LIKE '%". $_GET['search'] ."%';";
+      $query = "SELECT * FROM user_permissions Where ". $_GET['search_by'] ." LIKE '%". $_GET['search'] ."%'";
   		$result = $con->query($query);
   		$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
     	}

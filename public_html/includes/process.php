@@ -16,7 +16,7 @@ if (isset($_POST["username"]) AND isset($_POST["email"])) {
 if (isset($_POST["log_email"]) AND isset($_POST["log_password"])) {
 	$user = new User();
 	$result = $user->userLogin($_POST["log_email"],$_POST["log_password"]);
-	echo $result;
+	print_r($result);
 	exit();
 }
 
@@ -155,7 +155,7 @@ if (isset($_POST["manageBrand"])) {
 	}
 }
 
-//Delete 
+//Delete
 if (isset($_POST["deleteBrand"])) {
 	$m = new Manage();
 	$result = $m->deleteRecord("brands","bid",$_POST["id"]);
@@ -214,7 +214,7 @@ if (isset($_POST["manageProduct"])) {
 	}
 }
 
-//Delete 
+//Delete
 if (isset($_POST["deleteProduct"])) {
 	$m = new Manage();
 	$result = $m->deleteRecord("products","pid",$_POST["id"]);
@@ -254,14 +254,14 @@ if (isset($_POST["getNewOrderItem"])) {
 		    <td>
 		        <select name="pid[]" class="form-control form-control-sm pid" required>
 		            <option value="">Choose Product</option>
-		            <?php 
+		            <?php
 		            	foreach ($rows as $row) {
 		            		?><option value="<?php echo $row['pid']; ?>"><?php echo $row["product_name"]; ?></option><?php
 		            	}
 		            ?>
 		        </select>
 		    </td>
-		    <td><input name="tqty[]" readonly type="text" class="form-control form-control-sm tqty"></td>   
+		    <td><input name="tqty[]" readonly type="text" class="form-control form-control-sm tqty"></td>
 		    <td><input name="qty[]" type="text" class="form-control form-control-sm qty" required></td>
 		    <td><input name="price[]" type="text" class="form-control form-control-sm price" readonly></span>
 		    <span><input name="pro_name[]" type="hidden" class="form-control form-control-sm pro_name"></td>
@@ -282,7 +282,7 @@ if (isset($_POST["getPriceAndQty"])) {
 
 
 if (isset($_POST["order_date"]) AND isset($_POST["cust_name"])) {
-	
+
 	$orderdate = $_POST["order_date"];
 	$cust_name = $_POST["cust_name"];
 

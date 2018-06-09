@@ -47,7 +47,6 @@ if (isset($_SESSION["userid"])) {
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Email address</label>
 			    <input type="email" class="form-control" name="log_email" id="log_email" placeholder="Enter email">
-			    <small id="e_error" class="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Password</label>

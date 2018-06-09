@@ -70,7 +70,7 @@ $(document).ready(function(){
 					}else{
 						$(".overlay").hide();
 						//alert('User Added Successfully!');
-						window.location.href = encodeURI(DOMAIN+"/dashboard.php?msg=You are registered Now you can login");
+						window.location.href = encodeURI(DOMAIN+"/dashboard.php?msg=User registered Successfully!");
 					}
 				}
 			})
@@ -118,6 +118,7 @@ $(document).ready(function(){
 					}else if(data == "PASSWORD_NOT_MATCHED"){
 						$(".overlay").hide();
 						pass.addClass("border-danger");
+						alert("password incorrect");
 						$("#p_error").html("<span class='text-danger'>Please Enter Correct Password</span>");
 						status = false;
 					}else{
@@ -204,7 +205,7 @@ $(document).ready(function(){
 					}else{
 						alert(data);
 					}
-						
+
 				}
 			})
 		}
@@ -229,7 +230,7 @@ $(document).ready(function(){
 						console.log(data);
 						alert(data);
 					}
-						
+
 				}
 			})
 	})

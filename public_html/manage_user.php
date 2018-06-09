@@ -45,17 +45,17 @@ include_once("./database/db.php");
 			      <tr>
 			        <th>Name</th>
 			        <th>Email</th>
-			        <th>User Role</th>
+
 			        <th>Registration Date</th>
 							<th>Actions</th>
 			      </tr>
 			    </thead>
 			    <tbody id="">
-						<?php	foreach ($rows as $row) { ?>
+						<?php	foreach ($rows as $row) {  ?>
 							<tr>
 								<td><?php echo $row['username']; ?></td>
 								<td><?php echo $row['email']; ?></td>
-								<td><?php echo $row['usertype']; ?></td>
+
 								<td><?php echo $row['register_date']; ?></td>
 								<td>
                   <a href="manage_user.php?id=<?php echo $row['id']; ?>" onclick="alert('Are you sure!')" class="btn btn-danger btn-sm ">Delete</a>

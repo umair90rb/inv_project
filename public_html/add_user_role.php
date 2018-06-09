@@ -18,11 +18,12 @@ if (isset($_POST['add_role'])) {
   isset($_POST['manage_categories']) ? $manage_categories=$_POST['manage_categories'] : $manage_categories=0;
   isset($_POST['manage_brands']) ? $manage_brands=$_POST['manage_brands'] : $manage_brands=0;
   isset($_POST['manage_products']) ? $manage_products=$_POST['manage_products'] : $manage_products=0;
+	isset($_POST['inventory']) ? $inventory=$_POST['inventory'] : $inventory=0;
   $db = new Database();
   $con = $db->connect();
-  $query = "INSERT INTO user_permissions(title, add_user, manage_user, user_roles, new_lead, customer_record, new_order, orders, manage_categories, manage_brands, manage_products, stock_summary) VALUES('$title', '$add_user', '$manage_user', '$user_role', '$new_lead', '$customer_record', '$new_order', '$order', '$manage_categories', '$manage_brands', '$manage_products', '$stock_summary')";
+  $query = "INSERT INTO user_permissions(title, add_user, manage_user, user_roles, new_lead, customer_record, new_order, orders, manage_categories, manage_brands, manage_products, stock_summary, inventory) VALUES('$title', '$add_user', '$manage_user', '$user_role', '$new_lead', '$customer_record', '$new_order', '$order', '$manage_categories', '$manage_brands', '$manage_products', '$stock_summary', '$inventory')";
   $result = $con->query($query);
-  print_r($result);exit;
+	header("location:".DOMAIN."/dashboard.php?msg=Operation Successful.");
 }
 ?>
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ if (isset($_POST['add_role'])) {
 		        <form action="" method="post">
 		          <div class="form-group">
 		            <label for="title">Title</label>
-		            <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title">
+		            <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required>
 		          </div>
               <p class="text"> Set User Permissions</p>
               <div class="row">
@@ -149,6 +150,14 @@ if (isset($_POST['add_role'])) {
                   <input class="form-check-input" type="checkbox" name="manage_products" value="1">
                   <label class="form-check-label">
                     <small class="text-muted">Manage Products</small>
+                  </label>
+                </div>
+                </div>
+								<div class="col">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="inventory" value="1">
+                  <label class="form-check-label">
+                    <small class="text-muted">Inventory</small>
                   </label>
                 </div>
                 </div>

@@ -5,7 +5,7 @@
 */
 class User
 {
-	
+
 	private $con;
 
 	function __construct()
@@ -29,7 +29,7 @@ class User
 	}
 
 	public function createUserAccount($username,$email,$password,$usertype){
-		//To protect your application from sql attack you can user 
+		//To protect your application from sql attack you can user
 		//prepares statment
 		if ($this->emailExists($email)) {
 			return "EMAIL_ALREADY_EXISTS";
@@ -37,9 +37,9 @@ class User
 			$pass_hash = password_hash($password,PASSWORD_BCRYPT,["cost"=>8]);
 			$date = date("Y-m-d");
 			$notes = "";
-			$pre_stmt = $this->con->prepare("INSERT INTO `user`(`username`, `email`, `password`, `usertype`, `register_date`, `last_login`, `notes`)
-			 VALUES (?,?,?,?,?,?,?)");
-			$pre_stmt->bind_param("sssssss",$username,$email,$pass_hash,$usertype,$date,$date,$notes);
+			$pre_stmt = $this->con->prepare("INSERT INTO `user`(`username`, `email`, `password`, `register_date`, `last_login`, `user_role`)
+			 VALUES (?,?,?,?,?,?)");
+			$pre_stmt->bind_param("ssssss",$username,$email,$pass_hash,$date,$date, $usertype);
 			$result = $pre_stmt->execute() or die($this->con->error);
 			if ($result) {
 				return $this->con->insert_id;
@@ -47,11 +47,11 @@ class User
 				return "SOME_ERROR";
 			}
 		}
-			
+
 	}
 
 	public function userLogin($email,$password){
-		$pre_stmt = $this->con->prepare("SELECT id,username,password,last_login FROM user WHERE email = ?");
+		$pre_stmt = $this->con->prepare("SELECT id,username,password,user_role FROM user WHERE email = ?");
 		$pre_stmt->bind_param("s",$email);
 		$pre_stmt->execute() or die($this->con->error);
 		$result = $pre_stmt->get_result();
@@ -63,31 +63,18 @@ class User
 			if (password_verify($password,$row["password"])) {
 				$_SESSION["userid"] = $row["id"];
 				$_SESSION["username"] = $row["username"];
-				$_SESSION["last_login"] = $row["last_login"];
-								
-				//Here we are updating user last login time when he is performing login
-				$last_login = date($row["last_login"],"Y-m-d h:m:s");
-				// $pre_stmt = $this->con->prepare("UPDATE user SET last_login = ? WHERE email = ?");
-				// $pre_stmt->bind_param("ss",$last_login,$email);
-				// $result = $pre_stmt->execute() or die($this->con->error);
-				if ($result) {
-					return 1;
-				}else{
-					return 0;
-				}
-
+				$_SESSION['user_role'] = $row['user_role'];
+				return true;
 			}else{
-				return "PASSWORD_NOT_MATCHED";
-			}
+			return "PASSWORD_NOT_MATCHED";
 		}
 	}
-
 }
 
+}
 //$user = new User();
 //echo $user->createUserAccount("Test","rizwan1@gmail.com","1234567890","Admin");
 
 //echo $user->userLogin("rizwan1@gmail.com","1234567890");
 
 //echo $_SESSION["username"];
-?>
